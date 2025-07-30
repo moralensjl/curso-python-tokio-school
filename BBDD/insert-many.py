@@ -20,6 +20,17 @@ usuarios = [('Victoria', 22, 'victoria@pruebas.es'),
 # """, ("Laura", 29, "laura@pruebas.es"))
 
 
+cur.executemany("""
+    INSERT INTO clientes (nombre, apellido, dni, fecha_nac, sueldo, id_cliente) VALUES
+    (%s, %s, %s, %s, %s, %s)
+""", [
+    ('Moralens', 'Jean-Louis', 'A001', '1997-11-06', 30000, 1),
+    ('Ana', 'Pérez', 'A002', '1990-03-15', 25000, 2),
+    ('Luis', 'Gómez', 'A003', '1985-07-22', 28000, 3)
+])
+
+
+
 
 # Usamos el metodo executemany para inserta varios registros
 cursor.executemany("INSERT INTO usuarios VALUES (?,?,?)", usuarios)
